@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="htmlchck.cpp" />
     <ClCompile Include="htmltags.cpp" />
     <ClCompile Include="tag.cpp" />
   </ItemGroup>

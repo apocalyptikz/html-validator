@@ -21,6 +21,9 @@
     <ClCompile Include="tag.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="htmlchck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="htmltags.h">
