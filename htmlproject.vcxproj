@@ -129,6 +129,8 @@
   <ItemGroup>
     <ClInclude Include="htmltags.h" />
     <ClInclude Include="outputHelper.h" />
+    <ClInclude Include="queue.h" />
+    <ClInclude Include="stack.h" />
     <ClInclude Include="tag.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
