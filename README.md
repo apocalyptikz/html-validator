@@ -52,32 +52,3 @@
 </ul></li>
 </ul>
 <p>Your program should end with either: Processing complete. Invalid HTML5. Tag is XXX but top of stack is YYY or Processing complete. Document is valid. Unique tags seen in sorted order: !doctype a body div head html img li link meta or Processing complete. Invalid HTML5. Tags matched, however, [center,font] are not a valid HTML5 tag(s) Unique tags seen in sorted order: !doctype a body div head html img li link meta or Processing complete. Invalid HTML5. Unmatched tags remain on stack: [XXX, YYY, ZZZ]</p>
-<h2 id="other-requirements">Other Requirements</h2>
-<ul>
-<li>Execution will be tested via the existence of the above wording.</li>
-<li>The tags must be placed in a stack and used to verify validity</li>
-<li>For full credit your code should have zero compiler warnings.</li>
-<li>Your code will be checked for memory leaks. Memory leaks will be verified via a tool called “valgrind” as well as visually.</li>
-<li>Usage of any STL containers other than list will affect grade detrimentally.</li>
-<li>Avoid all STL items except std::copy (algorithm), std::swap (algorithm or utility), assert (cassert), size_t. In addition, you may use functions from the following libraries: iostream.</li>
-<li>Usage of recursion will result in no credit</li>
-<li>Only submit the file(s) listed in deliverables, submitting object files, IDE project files, and executables will impact grade.</li>
-<li>Don’t forget to document the queue and stack class, see course outline for details. See the FIXME in the class documenation.</li>
-</ul>
-<h2 id="attachments">Attachments</h2>
-<p>stack should only contain the following methods, they should all be public:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c++"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" title="1">stack();</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="dt">void</span> pop();</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="at">const</span> T&amp; top() <span class="at">const</span>;</a>
-<a class="sourceLine" id="cb3-4" title="4">T&amp; top();</a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="dt">void</span> push(<span class="at">const</span> T&amp;);</a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="dt">bool</span> empty() <span class="at">const</span>;</a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="dt">void</span> clear();</a></code></pre></div>
-<p>queue should only contain the following methods, they should all be public:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c++"><code class="sourceCode cpp"><a class="sourceLine" id="cb4-1" title="1">queue();</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="dt">void</span> dequeue();</a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="at">const</span> T&amp; front() <span class="at">const</span>;</a>
-<a class="sourceLine" id="cb4-4" title="4">T&amp; front();</a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="dt">void</span> enqueue(<span class="at">const</span> T&amp;);</a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="dt">bool</span> empty() <span class="at">const</span>;</a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="dt">void</span> clear();</a></code></pre></div>
