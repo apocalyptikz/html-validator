@@ -1,15 +1,19 @@
 /*
 Programmer Name: Jonathan Christian
+		Some functions by Steven Miller
 Date Submitted:
 File Purpose: htmlcheck driver
 Date Updated: n/a
 Purpose for Update: n/a
 Global Variable List: n/a
+
+
 */
 
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include "htmltags.h"
 
 namespace DS {
 
@@ -44,6 +48,11 @@ namespace DS {
 
 	int main(int argc, char* argv[])
 	{
+		std::ifstream fileIn;
+		open_for_read(fileIn, argv[1]);
+
+		while (is_more)
+			htmltags(fileIn);
 
 		return 0;
 	}
