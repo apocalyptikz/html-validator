@@ -16,57 +16,55 @@ Global Variable List: n/a
 #include "queue.h"
 #include "stack.h"
 
-namespace DS {
-	int main(int argc, char *argv[])
+
+int main(int argc, char *argv[])
+{
+	DS::htmltags tags = DS::htmltags(argv[1]);
+
+	DS::stack<DS::tag> tagStack; //for validation
+	DS::queue<DS::tag> tagQueue; //for cout entire list of tags, alphabetical order
+
+	while (!tags.empty())
 	{
-		htmltags tags = htmltags(argv[1]);
-
-		stack<tag> tagStack; //for validation
-		queue<tag> tagQueue; //for cout entire list of tags, alphabetical order
-
-		while (!tags.empty())
+		if (tags.front().isValidTag())
 		{
-			if (tags.front().isValidTag())
+			if (tags.front().isOpeningTag())
 			{
-				if (tags.front().isOpeningTag())
+				std::cout << "Tag " << tags.front().getTagName() << " pushed." << std::endl;
+				//Add tag to queue by alphebetical order
+			}
+			if (tags.front().isClosingTag())
+			{
+				DS::tag currTag = tags.front();
+				tags.pop();
+				if (tags.front().getTagName() == currTag.getTagName() && tags.front().isOpeningTag())
 				{
-					std::cout << "Tag " << tags.front().getTagName() << " pushed." << std::endl;
-					//Add tag to queue by alphebetical order
-				}
-				if (tags.front().isClosingTag())
-				{
-					tag currTag = tags.front();
+					//currTag matches tags.front()
+					std::cout << "Tag /" << currTag.getTagName() << " matches top of stack." << std::endl;
 					tags.pop();
-					if (tags.front().getTagName() == currTag.getTagName() && tags.front().isOpeningTag())
-					{
-						//currTag matches tags.front()
-						std::cout << "Tag /" << currTag.getTagName() << " matches top of stack." << std::endl;
-						tags.pop();
-					}
-					else
-					{
-						//Tag is XXX but top of stack is YYY
-					}
+				}
+				else
+				{
+					//Tag is XXX but top of stack is YYY
 				}
 			}
 		}
-
-		if (tagStack.empty())
-		{
-			while (!tagQueue.empty())
-			{
-				std::cout << tagQueue.front();
-				tagQueue.dequeue();
-			}
-			//Empty, opening tags matched closing tags
-		}
-		else
-		{
-			//Not empty, mismatched tags
-		}
-
-
-		return 0;
 	}
 
+	if (tagStack.empty())
+	{
+		while (!tagQueue.empty())
+		{
+			std::cout << tagQueue.front();
+			tagQueue.dequeue();
+		}
+		//Empty, opening tags matched closing tags
+	}
+	else
+	{
+		//Not empty, mismatched tags
+	}
+
+
+	return 0;
 }
