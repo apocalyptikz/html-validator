@@ -1,6 +1,8 @@
 #ifndef _QUEUE_H
 #define _QUEUE_H
 
+#include <list>
+
 namespace DS {
 	template<typename T>
 	class queue

@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <cstring>
+#include <cstdlib>
 #include <limits>
 #include <regex>
 #include <iostream>

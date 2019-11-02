@@ -1,6 +1,5 @@
 /*
 Programmer Name: Jonathan Christian
-		Some functions by Steven Miller
 Date Submitted:
 File Purpose: htmlcheck driver
 Date Updated: n/a
@@ -18,11 +17,7 @@ Global Variable List: n/a
 #include "stack.h"
 
 namespace DS {
-
-	
-	
-
-	int main(int argc, char* argv[])
+	int main(int argc, char *argv[])
 	{
 		htmltags tags = htmltags(argv[1]);
 
@@ -42,7 +37,7 @@ namespace DS {
 				{
 					tag currTag = tags.front();
 					tags.pop();
-					if (tags.front().getTagName == currTag.getTagName() && tags.front().isOpeningTag())
+					if (tags.front().getTagName() == currTag.getTagName() && tags.front().isOpeningTag())
 					{
 						//currTag matches tags.front()
 						std::cout << "Tag /" << currTag.getTagName() << " matches top of stack." << std::endl;
