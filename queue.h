@@ -9,7 +9,7 @@ namespace DS {
 	{
 	public:
 		typedef size_t size_type;
-		queue();
+		queue() {}
 		void dequeue();
 		const T& front() const;
 		T& front();
@@ -19,12 +19,6 @@ namespace DS {
 	private:
 		std::list<T> data;
 	};
-
-	template<typename T>
-	queue<T>::queue()
-	{
-		
-	}
 
 	template<typename T>
 	void queue<T>::dequeue()

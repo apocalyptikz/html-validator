@@ -5,8 +5,6 @@ File Purpose: htmlcheck driver
 Date Updated: n/a
 Purpose for Update: n/a
 Global Variable List: n/a
-
-
 */
 
 #include <iostream>
@@ -56,9 +54,9 @@ void insertInQueue(DS::queue<DS::tag>& qIn, DS::tag tagIn)
 		qIn.enqueue(tagIn);
 		return;
 	}
-	
+
 	DS::queue<DS::tag> tempQueue;
-	
+
 	//Compare strings of tags, adding each tag into tempqueue
 	while (!qIn.empty() && qIn.front().getTagName() < tagIn.getTagName())
 	{
@@ -77,10 +75,9 @@ void insertInQueue(DS::queue<DS::tag>& qIn, DS::tag tagIn)
 	qIn = tempQueue;
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
 	DS::htmltags tags = DS::htmltags(argv[1]);
-
 	DS::stack<DS::tag> tagStack; //for validation
 	DS::queue<DS::tag> tagQueue; //for cout entire list of tags, alphabetical order
 	DS::queue<DS::tag> invalidQueue; //Invalid tags
@@ -95,12 +92,7 @@ int main(int argc, char *argv[])
 				if (currTag.isOpeningTag())
 				{
 					std::cout << "Tag " << currTag.getTagName() << " pushed." << std::endl;
-					//Empty queue into another queue until the correct spot for currTag
-					//enqueue currTag
-					//then enqueue rest of tagqueue
-					//put tempqueue into tagqueue
 
-					//Add tag to queue by alphebetical order
 					insertInQueue(tagQueue, currTag);
 
 					tags.pop();
@@ -121,25 +113,24 @@ int main(int argc, char *argv[])
 						std::cout << "Tag mismatch: tag is " << currTag.getTagName() << " but top of stack is "
 							<< tags.front().getTagName() << std::endl;
 						tags.pop();
-						
 					}
 				}
 			}
-			else
+			else //Self closing tag
 			{
 				std::cout << "Tag " << currTag.getTagName() << " self closing." << std::endl;
 				tags.pop();
 				insertInQueue(tagQueue, currTag);
 			}
-			
 		}
-		else
+		else //Not a valid HTML5 tag
 		{
-			std::cout << "Tag " << currTag.getTagName() << " is not a valid HTML5 tag.";
+			std::cout << "Tag " << currTag.getTagName() << " is not a valid HTML5 tag." << std::endl;
 			insertInQueue(invalidQueue, currTag);
 			tags.pop();
 		}
 	}
+
 	std::cout << "Processing complete. ";
 	//No mismached tags
 	if (tagStack.empty())
@@ -149,7 +140,7 @@ int main(int argc, char *argv[])
 		{
 			std::cout << "Invalid HTML5. Tags matched, however, ";
 			outQueue(invalidQueue);
-			std::cout << " are not a valid HTML5 tag(s).";
+			std::cout << " is/are not a valid HTML5 tag(s).";
 		}
 		else //No invalid tags
 		{
@@ -158,9 +149,9 @@ int main(int argc, char *argv[])
 			outQueue(tagQueue);
 			//Empty, opening tags matched closing tags
 		}
-		
+
 	}
-	else
+	else //Stack isn't empty :(
 	{
 		std::cout << "Invalid HTML5. Unmatched tags remain on stack: ";
 		while (!tagStack.empty())
@@ -170,6 +161,5 @@ int main(int argc, char *argv[])
 		}
 	}
 
-
-	return 0;
+	return EXIT_SUCCESS;
 }

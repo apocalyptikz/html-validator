@@ -6,7 +6,7 @@ namespace DS {
 	class stack
 	{
 	public:
-		stack();
+		stack() {}
 		void pop();
 		const T& top() const;
 		T& top();
@@ -17,10 +17,6 @@ namespace DS {
 		std::list<T> data;
 	};
 
-	template<typename T>
-	stack<T>::stack() {
-
-	}
 
 	template<typename T>
 	void stack<T>::pop()
