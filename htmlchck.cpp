@@ -40,7 +40,6 @@ bool queueContains(DS::queue<DS::tag>& qIn, DS::tag tagIn)
 		qIn.dequeue();
 	}
 	qIn = tempQueue;
-	tempQueue.clear();
 	return false;
 }
 
@@ -77,7 +76,7 @@ void insertInQueue(DS::queue<DS::tag>& qIn, DS::tag tagIn)
 
 int main(int argc, char* argv[])
 {
-	DS::htmltags tags = DS::htmltags(argv[1]);
+	DS::htmltags tags = DS::htmltags(argv[1]); //Entire queue of tags from htmltags class
 	DS::stack<DS::tag> tagStack; //for validation
 	DS::queue<DS::tag> tagQueue; //for cout entire list of tags, alphabetical order
 	DS::queue<DS::tag> invalidQueue; //Invalid tags
@@ -87,7 +86,7 @@ int main(int argc, char* argv[])
 		DS::tag currTag = tags.front();
 		if (currTag.isValidTag())
 		{
-			if (!currTag.isSelfClosingTag())
+			if (!currTag.isSelfClosingTag()) //Self closing tags are handled differently
 			{
 				if (currTag.isOpeningTag())
 				{
@@ -116,7 +115,7 @@ int main(int argc, char* argv[])
 					}
 				}
 			}
-			else //Self closing tag
+			else //Self closing tag, no need to push on stack
 			{
 				std::cout << "Tag " << currTag.getTagName() << " self closing." << std::endl;
 				tags.pop();
@@ -149,7 +148,6 @@ int main(int argc, char* argv[])
 			outQueue(tagQueue);
 			//Empty, opening tags matched closing tags
 		}
-
 	}
 	else //Stack isn't empty :(
 	{
@@ -160,6 +158,5 @@ int main(int argc, char* argv[])
 			tagStack.pop();
 		}
 	}
-
 	return EXIT_SUCCESS;
 }
