@@ -9,7 +9,6 @@ Global Variable List: n/a
 
 #include <iostream>
 #include <fstream>
-#include <iomanip>
 #include "htmltags.h"
 #include "queue.h"
 #include "stack.h"
@@ -158,5 +157,5 @@ int main(int argc, char* argv[])
 			tagStack.pop();
 		}
 	}
-	return EXIT_SUCCESS;
+	return 21;
 }
